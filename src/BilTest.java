@@ -3,7 +3,7 @@ import junit.framework.TestCase;
 /********************************************
  * Project description
  *
- * Created by: Lasse J. Kongsdal
+ * Created by: Lasse J. Kongsdal og Fredrik Bille
  * Date: 19-10-2020
  *
  * Description of program
@@ -14,7 +14,7 @@ public class BilTest extends TestCase {
     Bil bilTest;
 
     public void setup() {
-        bilTest = new Bil(0,0,0, 0, 5000, 0, 164);
+        bilTest = new Bil(0,0,0, 5000, 0, 164, Bil.Gear.ZERO);
     }
 
     public void testStart() {
@@ -44,9 +44,11 @@ public class BilTest extends TestCase {
         assertEquals((double) 0, bilTest.getAcceleration());
     }
 
-    public void testaccelerate(){
+    public void testAccelerate(){
         setup();
         bilTest.setAcceleration(10);
+        bilTest.setClutchState(Bil.Clutch.DOWN);
+        bilTest.setIgnitionState(Bil.Ignition.ON);
         bilTest.accelerate();
         assertEquals((double) 10, bilTest.getCurrentSpeed());
 
@@ -112,5 +114,8 @@ public class BilTest extends TestCase {
         assertEquals((double) 0, bilTest.getCurrentRPM());
         assertEquals((double) 0, bilTest.getCurrentSpeed());
     }
+
+
+
 
 }
