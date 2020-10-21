@@ -7,7 +7,7 @@
  * Description of program
  ********************************************/
 
-public class Bil extends BilTest{
+public class Bil {
 
     private double acceleration;
     private Gear currentgear;
