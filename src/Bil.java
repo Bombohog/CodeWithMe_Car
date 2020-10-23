@@ -54,6 +54,9 @@ public class Bil {
             else {return false;}
         }
     }
+    public Bil(){
+
+    }
 
     public Bil(double acceleration, double odometer, double currentRPM, int maxRPM, double currentSpeed, double topSpeed, Gear gear) {
         this.acceleration = acceleration;
@@ -178,6 +181,22 @@ public class Bil {
     public void accelerate() {
         if (!(clutchState.clutchBreak(clutchState)) && ignitionState.getState(ignitionState)) {
             this.currentSpeed += this.acceleration;
+        }
+    }
+
+    public static void main(String[] args) {
+        Bil[] biler = new Bil[1000000];
+        for (int i = 0; i < 1000000; i++) {
+            biler[i] = new Bil();
+            System.out.print(i + ". ");
+            System.out.println(biler[i].toString());
+            biler[i].turnOn();
+            System.out.println(biler[i].ignitionState);
+            biler[i].turnOff();
+            System.out.println(biler[i].ignitionState);
+
+
+
         }
     }
 
